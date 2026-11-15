@@ -20,13 +20,13 @@ spec:
   type: ClusterIP
   clusterIP: None
   ports:
-    - port: {{ .Values.scheduler.config.server.port }}
+    - port: {{ .Values.scheduler.containerPort }}
       name: grpc
       {{- if semverCompare ">=1.20" .Capabilities.KubeVersion.Version }}
       appProtocol: grpc
       {{- end }}
       protocol: TCP
-      targetPort: {{ .Values.scheduler.config.server.port }}
+      targetPort: {{ .Values.scheduler.containerPort }}
   selector:
     app: {{ template "dragonfly.fullname" . }}
     component: {{ .Values.scheduler.name }}
