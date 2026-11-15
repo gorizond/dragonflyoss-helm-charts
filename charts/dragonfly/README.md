@@ -591,12 +591,6 @@ helm delete dragonfly --namespace dragonfly-system
 | scheduler.service | object | `{"annotations":{},"labels":{}}` | Headless Service of the scheduler, so that clients discover every scheduler IP via DNS. |
 | scheduler.service.annotations | object | `{}` | Service annotations. |
 | scheduler.service.labels | object | `{}` | Service labels. |
-| scheduler.clientService | object | `{"annotations":{},"clusterIP":"","enabled":true,"labels":{},"port":8002}` | Non-headless client Service. It provides a stable ClusterIP for DaemonSets and the public Traefik passthrough front while the headless Service above keeps peer discovery. |
-| scheduler.clientService.annotations | object | `{}` | Service annotations. |
-| scheduler.clientService.clusterIP | string | `""` | Pin the ClusterIP. Empty lets Kubernetes allocate one; the operator pins it so the P2P certificate can include the address as an IP SAN. |
-| scheduler.clientService.enabled | bool | `true` | Render the non-headless scheduler client Service. |
-| scheduler.clientService.labels | object | `{}` | Service labels. |
-| scheduler.clientService.port | int | `8002` | Service port. Defaults to scheduler.containerPort. |
 | scheduler.statefulsetAnnotations | object | `{}` | StatefulSet annotations. |
 | scheduler.terminationGracePeriodSeconds | string | `nil` | Seconds the Pod is given to terminate gracefully. |
 | scheduler.tolerations | list | `[]` | List of node taints to tolerate. |
