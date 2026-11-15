@@ -393,6 +393,21 @@ scheduler:
     labels: {}
     # -- Service annotations.
     annotations: {}
+  # -- Non-headless client Service. It provides a stable ClusterIP for
+  # DaemonSets and the public Traefik passthrough front while the headless
+  # Service above keeps peer discovery.
+  clientService:
+    # -- Render the non-headless scheduler client Service.
+    enabled: true
+    # -- Service port. Defaults to scheduler.containerPort.
+    port: 8002
+    # -- Pin the ClusterIP. Empty lets Kubernetes allocate one; the operator
+    # pins it so the P2P certificate can include the address as an IP SAN.
+    clusterIP: ''
+    # -- Service labels.
+    labels: {}
+    # -- Service annotations.
+    annotations: {}
   # -- Pod priority class name.
   priorityClassName: ''
   # -- Node labels for pod assignment.
