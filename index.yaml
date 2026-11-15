@@ -26,7 +26,7 @@ entries:
           url: https://github.com/dragonflyoss/client
     apiVersion: v2
     appVersion: 2.5.4
-    created: "2026-11-15T04:17:43.549716084+01:00"
+    created: "2026-11-15T04:25:04.925567063+01:00"
     dependencies:
     - condition: mysql.enable
       name: mysql
@@ -43,7 +43,7 @@ entries:
       version: 0.12.1
     description: Dragonfly is an intelligent P2P based image and file distribution
       system
-    digest: f2e29cd2fa89565192bd4ba5e13b1c3a8a514abc4dfab9ca3efc23a3785a2d1f
+    digest: 5b7631fb4fc3468c9e6bfb887bfd857a5b26a7d631159211c51198b37180056c
     home: https://d7y.io/
     icon: https://raw.githubusercontent.com/dragonflyoss/dragonfly/main/docs/images/logo/dragonfly.svg
     keywords:
@@ -131,4 +131,4 @@ entries:
     urls:
     - https://gorizond.github.io/dragonflyoss-helm-charts/dragonfly-1.10.1-patch.1.tgz
     version: 1.10.1-patch.1
-generated: "2026-11-15T04:17:43.532144843+01:00"
+generated: "2026-11-15T04:25:04.904854088+01:00"
