@@ -409,7 +409,7 @@ scheduler:
   updateStrategy: {}
   # -- StatefulSet annotations.
   statefulsetAnnotations: {}
-  # -- Container port of the gRPC server.
+  # -- Container port of the gRPC server. Also used by the scheduler Service.
   containerPort: 8002
   # -- Extra environment variables for the container.
   extraEnvVars: []
@@ -454,8 +454,10 @@ scheduler:
       listenIP: '0.0.0.0'
       # -- Port the gRPC server listens on.
       port: 8002
-      # -- (object) mTLS configuration of the gRPC server with the caCert, cert and key file paths.
-      # Empty serves plaintext.
+      # -- (object) mTLS configuration of the single scheduler gRPC server with
+      # the caCert, cert and key file paths. Empty serves plaintext.
+      # `server.grpc.tls` is accepted as an alias, but `server.rest.tls` is
+      # manager-only: the scheduler has no REST server.
       tls: null
       # -- Maximum number of requests per second accepted by the gRPC server, counting both unary
       # requests and new stream connections.

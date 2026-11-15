@@ -530,13 +530,13 @@ helm delete dragonfly --namespace dragonfly-system
 | scheduler.config.server.pluginDir | string | `""` | Plugin directory. |
 | scheduler.config.server.port | int | `8002` | Port the gRPC server listens on. |
 | scheduler.config.server.requestRateLimit | int | `4000` | Maximum number of requests per second accepted by the gRPC server, counting both unary requests and new stream connections. |
-| scheduler.config.server.tls | object | `nil` | mTLS configuration of the gRPC server with the caCert, cert and key file paths. Empty serves plaintext. |
+| scheduler.config.server.tls | object | `nil` | mTLS configuration of the single scheduler gRPC server with the caCert, cert and key file paths. Empty serves plaintext. `server.grpc.tls` is accepted as an alias, but `server.rest.tls` is manager-only: the scheduler has no REST server. |
 | scheduler.config.server.workHome | string | `""` | Work directory. |
 | scheduler.config.tracing.endpoint | string | `nil` | Endpoint traces are exported to, e.g. localhost:4317. |
 | scheduler.config.tracing.headers | object | `{}` | Headers sent with every exported trace. |
 | scheduler.config.tracing.path | string | `nil` | URL path traces are exported to over http or https, defaults to /v1/traces. |
 | scheduler.config.tracing.protocol | string | `""` | Protocol used to export traces, one of http, https or grpc. Empty disables tracing. |
-| scheduler.containerPort | int | `8002` | Container port of the gRPC server. |
+| scheduler.containerPort | int | `8002` | Container port of the gRPC server. Also used by the scheduler Service. |
 | scheduler.dynconfig | object | `{"applications":[],"schedulerClusterClientConfig":{"loadLimit":200},"schedulerClusterConfig":{"candidateParentLimit":3,"filterParentLimit":15},"seedPeerClusterConfig":{"loadLimit":2000}}` | Local dynamic configuration (dynconfig.yaml), delivered as a ConfigMap next to scheduler.yaml. It is used only without a manager, that is when manager.enable is false and externalManager.host is empty, and refreshed every scheduler.config.dynconfig.refreshInterval. |
 | scheduler.dynconfig.applications | list | `[]` | Applications known to the scheduler and their download priorities. |
 | scheduler.dynconfig.schedulerClusterClientConfig | object | `{"loadLimit":200}` | Client configuration pushed to the peers of this cluster. |
