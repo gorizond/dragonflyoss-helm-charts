@@ -51,14 +51,13 @@ data:
   {{- if not (include "dragonfly.manager.enable" .) }}
   dynconfig.yaml: |-
     scheduler:
-      {{- if .Values.client.dynconfig.scheduler.addr }}
-      addr: {{ .Values.client.dynconfig.scheduler.addr }}
-      {{- else }}
-      addr: {{ template "dragonfly.scheduler.fullname" . }}.{{ .Release.Namespace }}.svc.{{ .Values.clusterDomain }}:{{ .Values.scheduler.config.server.port }}
-      {{- end }}
       {{- if .Values.client.dynconfig.scheduler.addrs }}
       addrs:
 {{ toYaml .Values.client.dynconfig.scheduler.addrs | indent 6 }}
+      {{- else if .Values.client.dynconfig.scheduler.addr }}
+      addr: {{ .Values.client.dynconfig.scheduler.addr }}
+      {{- else }}
+      addr: {{ template "dragonfly.scheduler.fullname" . }}.{{ .Release.Namespace }}.svc.{{ .Values.clusterDomain }}:{{ .Values.scheduler.config.server.port }}
       {{- end }}
     {{- if .Values.client.dynconfig.clientConfig }}
     clientConfig:

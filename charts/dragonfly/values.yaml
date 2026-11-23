@@ -1124,11 +1124,11 @@ seedClient:
   # empty, and refreshed every seedClient.config.dynconfig.refreshInterval.
   dynconfig:
     scheduler:
-      # -- Scheduler headless Service address with port, resolved via DNS to every scheduler IP. Empty
-      # defaults to the scheduler Service of this chart.
+      # -- Scheduler address with port used only when addrs is empty. Empty defaults to the scheduler
+      # Service of this chart.
       addr: ''
-      # -- Static scheduler addresses with port, e.g. ['192.168.1.10:8002']. They take precedence over
-      # addr when set.
+      # -- Static scheduler addresses with port, e.g. ['192.168.1.10:8002']. When set, addr is not
+      # rendered at all.
       addrs: []
     # -- Block list for normal peers, e.g. { blockList: { task: { download: { applications: [], urls:
     # [], tags: [], priorities: [] } } } }.
@@ -1663,11 +1663,11 @@ client:
   # empty, and refreshed every client.config.dynconfig.refreshInterval.
   dynconfig:
     scheduler:
-      # -- Scheduler headless Service address with port, resolved via DNS to every scheduler IP. Empty
-      # defaults to the scheduler Service of this chart.
+      # -- Scheduler address with port used only when addrs is empty. Empty defaults to the scheduler
+      # Service of this chart.
       addr: ''
-      # -- Static scheduler addresses with port, e.g. ['192.168.1.10:8002']. They take precedence over
-      # addr when set.
+      # -- Static scheduler addresses with port, e.g. ['192.168.1.10:8002']. When set, addr is not
+      # rendered at all.
       addrs: []
     # -- Block list for normal peers, e.g. { blockList: { task: { download: { applications: [], urls:
     # [], tags: [], priorities: [] } } } }.
